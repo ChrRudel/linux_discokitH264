@@ -158,12 +158,14 @@ static const struct imx219_reg imx219_common_regs[] = {
 	{0x0100, 0x00},	/* Mode Select */
 
 	/* To Access Addresses 3000-5fff, send the following commands */
-	{0x30eb, 0x0c},
-	{0x30eb, 0x05},
+	{0x30eb, 0x05},		// Corrected Access command sequence
+	{0x30eb, 0x0c},		// Corrected Access command sequence
 	{0x300a, 0xff},
 	{0x300b, 0xff},
 	{0x30eb, 0x05},
 	{0x30eb, 0x09},
+	{0x5040, 0x00},		// Keep CLK in HS mode in frame blanking
+	{0x5041, 0x00},		// Disable Embedded Data Line
 
 	/* PLL Clock Table */
 	{0x0301, 0x05},	/* VTPXCK_DIV */
